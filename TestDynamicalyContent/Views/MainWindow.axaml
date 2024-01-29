@@ -1,0 +1,29 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:TestDynamicalyContent.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="TestDynamicalyContent.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="TestDynamicalyContent">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <Grid ColumnDefinitions="Auto Auto *">
+        <DockPanel Grid.Column="0" LastChildFill="True">
+            <StackPanel Spacing="20" DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
+                <Button Padding="10 5" Content="UpdateContent" Command="{Binding SetNewContent}"/>
+            </StackPanel>
+            <TextBox Text="{Binding ViewString}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+        </DockPanel>
+        <GridSplitter Grid.Column="1" />
+        <Panel Grid.Column="2" Name="ContentPanel"/>
+    </Grid>
+
+</Window>
